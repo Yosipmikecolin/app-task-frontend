@@ -83,11 +83,7 @@ export default function TaskItem({ task }: TaskItemProps) {
   };
 
   return (
-    <div
-      className={`bg-white border border-border border-gray-200 box-shadow-sm rounded-lg p-4 transition-all hover:shadow-md ${
-        task.completed && !isEditing ? "opacity-75" : ""
-      }`}
-    >
+    <div className="bg-white border border-border border-gray-200 box-shadow-sm rounded-lg p-4 transition-all hover:shadow-md">
       {/* Logica para completar la tarea */}
       <div className="flex items-start gap-4">
         {!isEditing && (
@@ -97,7 +93,7 @@ export default function TaskItem({ task }: TaskItemProps) {
             className={`cursor-pointer mt-1 transition-all focus:outline-none ${
               task.completed
                 ? "bg-linear-to-r from-green-500 to-green-600 text-white rounded-lg p-1 shadow-md"
-                : "text-muted-foreground hover:text-blue-500"
+                : "text-muted-foreground hover:text-blue-500 rounded-lg p-1 shadow-md text-gray-400"
             }`}
             aria-label={
               task.completed
@@ -109,7 +105,7 @@ export default function TaskItem({ task }: TaskItemProps) {
           </button>
         )}
 
-        {/* Contenido de la tarea */}
+        {/* Contenido que se muestra cuando no se está editando */}
         <div className="flex-1 min-w-0 space-y-2">
           {isEditing ? (
             <div>
@@ -158,6 +154,7 @@ export default function TaskItem({ task }: TaskItemProps) {
               </button>
             </div>
           ) : (
+            /* Contenido que se muestra cuando no se está editando */
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-lg font-semibold text-balance">
