@@ -32,11 +32,12 @@ export default function TaskForm() {
   const onSubmit = async (data: TaskFormData) => {
     try {
       await mutateAsync({
-        title: data.title.trim(),
-        description: data.description?.trim() || "",
+        title: data.title,
+        description: data.description,
         completed: false,
       });
       reset();
+      toast.success("Tarea creada exitosamente");
     } catch (error: any) {
       toast.error(error?.response?.data?.message);
     }
@@ -66,7 +67,7 @@ export default function TaskForm() {
             {...register("title")}
             placeholder="Ej: Comprar leche"
             className="border-gray-200 box-shadow-sm focus:border-blue-500
- focus:box-shadow-sm w-full px-4 py-2 bg-background border border-input rounded-md text-foreground placeholder-muted-foreground focus:outline-none focus:ring-primary/50 transition-all"
+ focus:box-shadow-sm w-full px-4 py-2 bg-background border border-input rounded-md text-foreground placeholder-muted-foreground focus:outline-none transition-all"
           />
 
           {errors.title && (
