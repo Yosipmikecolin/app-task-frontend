@@ -7,8 +7,16 @@ import toast from "react-hot-toast";
 
 // ? 🧪 Esquema de validación con Zod
 const taskSchema = z.object({
-  title: z.string().min(1, "El título es requerido"),
-  description: z.string().min(1, "La descripción es requerida"),
+  title: z
+    .string()
+    .trim()
+    .min(1, "El título es requerido")
+    .max(20, "El título debe tener un máximo de 20 caracteres"),
+  description: z
+    .string()
+    .trim()
+    .min(1, "La descripción es requerida")
+    .max(50, "La descripción debe tener un máximo de 50 caracteres"),
 });
 
 type TaskFormData = z.infer<typeof taskSchema>;
